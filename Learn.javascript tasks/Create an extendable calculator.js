@@ -27,23 +27,15 @@ There may be error handling if you’d like to add it.
 */
 
 function Calculator() {
-  this.addMethod = function(str, func) {
-    return (this[str] = func);
-  };
+  this.addMethod = (str, func) => (this[str] = func);
   this.calculate = function(str) {
     let split = str.split(' ');
     let oper = split[1];
     let a = +split[0];
     let b = +split[2];
-    if (!this[oper] || isNaN(a) || isNaN(b)) {
-      return NaN;
-    }
+    if (!this[oper] || isNaN(a) || isNaN(b)) return NaN;
     return this[oper](a, b);
   };
-  this['+'] = function(a, b) {
-    return a + b;
-  };
-  this['-'] = function(a, b) {
-    return a - b;
-  };
+  this['+'] = (a, b) => a + b;
+  this['-'] = (a, b) => a - b;
 }
