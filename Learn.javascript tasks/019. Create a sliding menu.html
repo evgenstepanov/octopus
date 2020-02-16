@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            display: inline-block;
+        }
+
+        .arrow {
+            color: green;
+            position: absolute;
+            top: -1px;
+            left: -10px;
+        }
+
+        .closed {
+            display: none;
+        }
+
+        .menu {
+            cursor: pointer;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .down {
+            font-size: 10px;
+            top: 5px;
+            left: -10px;
+        }
+
+        ul {
+            margin: 0px;
+            margin-left: 15px;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="menu">
+        <div class="arrow up">▶</div>
+        <div class="arrow down closed">▼</div>
+        <div class="name">Sweeties (click me)!</div>
+    </div>
+    <ul class="list closed">
+        <li>Cake</li>
+        <li>Donut</li>
+        <li>Honey</li>
+    </ul>
+    <script>
+        document.querySelector(".menu").onclick = function (event) {
+            for (let i of document.querySelectorAll(".arrow")) {
+                i.classList.toggle("closed")
+            }
+            document.querySelector(".list").classList.toggle("closed")
+        }
+    </script>
+
+</body>
+
+</html>
