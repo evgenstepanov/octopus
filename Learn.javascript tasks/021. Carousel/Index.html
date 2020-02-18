@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+  <button class="arrow left">⇦</button>
+<div class="images">
+  <ul id="carousel">
+    <li><img src="https://en.js.cx/carousel/1.png"></li>
+    <li><img src="https://en.js.cx/carousel/2.png"></li>
+    <li><img src="https://en.js.cx/carousel/3.png"></li>
+    <li><img src="https://en.js.cx/carousel/4.png"></li>
+    <li><img src="https://en.js.cx/carousel/5.png"></li>
+    <li><img src="https://en.js.cx/carousel/6.png"></li>
+    <li><img src="https://en.js.cx/carousel/7.png"></li>
+    <li><img src="https://en.js.cx/carousel/8.png"></li>
+    <li><img src="https://en.js.cx/carousel/9.png"></li>
+    <li><img src="https://en.js.cx/carousel/10.png"></li>
+  </ul>
+</div>
+<button class="arrow right">⇨</button>
+</div>
+
+  <script>
+    // label the images to visually track them, just for convenience,
+    // this code can be removed
+    let i = 1;
+    for(let li of carousel.querySelectorAll('li')) {
+      li.style.position = 'relative';
+      li.insertAdjacentHTML('beforeend', `<span style="position:absolute;font-size:10px;left:0;top:0">${i}</span>`);
+      i++;
+    }
+
+    let left = document.querySelector(".arrow.left");
+    let right = document.querySelector(".arrow.right");
+    let shift = 0;
+    let li = document.querySelectorAll("#carousel li")[0].offsetWidth;
+    let lenghtOfCarousel = document.querySelectorAll("#carousel li").length*li;
+
+
+    right.onclick = function () {
+        if (lenghtOfCarousel + shift - li*3 > li*3 ) {
+        carousel.style.transform = `translate(${shift-=390}px)`} else {
+        carousel.style.transform = `translate(${-(lenghtOfCarousel - li*3)}px)`}
+
+    }
+    left.onclick = function () {
+        if (shift < 0) carousel.style.transform = `translate(${shift+=390}px)`
+        console.log(shift)
+    }
+    
+  </script>
+
+</body>
+</html>
