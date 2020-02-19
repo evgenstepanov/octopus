@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="/Learn.javascript tasks/Create an extendable calculator.js"></script>
-    <title>GitHub</title>
-  </head>
-  <body>
-    <p>Git</p>
-    <script></script>
-  </body>
-</html>
+<div id="menu">
+  <button data-action="save">Сохранить</button>
+  <button data-action="load">Загрузить</button>
+  <button data-action="search">Поиск</button>
+</div>
+
+<script>
+  class Menu {
+    constructor(elem) {
+      this._elem = elem;
+      elem.onclick = this.onClick.bind(this); // (*)
+    }
+
+    save() {
+      alert('сохраняю');
+    }
+
+    load() {
+      alert('загружаю');
+    }
+
+    search() {
+      alert('ищу');
+    }
+
+    onClick(event) {
+      let action = event.target.dataset.action;
+      if (action) {
+        this[action]();
+      }
+    }
+  }
+
+  new Menu(menu);
+</script>
