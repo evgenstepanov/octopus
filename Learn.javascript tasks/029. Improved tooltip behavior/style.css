@@ -1,7 +1,5 @@
 body {
   height: 2000px;
-  /* margin: 0px; */
-  /* the tooltip should work after page scroll too */
 }
 
 .tooltip {
@@ -35,4 +33,5 @@ body {
 p {
   text-align: justify;
   margin: 10px 3px;
+  border: 1px solid black;
 }
