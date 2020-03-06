@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        height: 2000px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Scroll me</h1>
+
+    <script>
+      document.onscroll = () => {
+        console.log(document.documentElement.getBoundingClientRect().bottom);
+        console.log(document.documentElement.clientHeight);
+      };
+    </script>
+  </body>
+</html>
