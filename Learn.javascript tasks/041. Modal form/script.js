@@ -19,12 +19,13 @@ function makeForm(text) {
 function removeForm() {
   document.querySelector('.background-form').remove();
   document.getElementById('prompt-form-container').style.display = 'none';
+  document.onkeydown = '';
 }
 
 function showPrompt(text, func) {
   makeForm(text);
-
   let form = document.forms[0];
+  form.text.focus();
 
   form.onsubmit = function() {
     let promptText = form.text.value;
@@ -34,8 +35,35 @@ function showPrompt(text, func) {
     return false;
   };
 
-  form.cancel.onclick = function() {
+  function cancel() {
     func(null);
     removeForm();
+    console.log('cancel');
+  }
+
+  form.cancel.onclick = cancel;
+  document.onkeydown = function(event) {
+    if (event.code === 'Escape') {
+      console.log('esc');
+      cancel();
+    }
+  };
+
+  let lastElem = form.elements[form.elements.length - 1];
+  let firstElem = form.elements[0];
+
+  lastElem.onkeydown = function(e) {
+    if (e.key == 'Tab' && !e.shiftKey) {
+      console.log(firstElem);
+      firstElem.focus();
+      return false;
+    }
+  };
+
+  firstElem.onkeydown = function(e) {
+    if (e.key == 'Tab' && e.shiftKey) {
+      lastElem.focus();
+      return false;
+    }
   };
 }
