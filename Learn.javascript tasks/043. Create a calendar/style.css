@@ -1,0 +1,23 @@
+input {
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+  width: 25px;
+}
+
+th {
+  font-weight: bold;
+  background-color: #e6e6e6;
+}
