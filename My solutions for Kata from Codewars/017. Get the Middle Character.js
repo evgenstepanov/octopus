@@ -6,5 +6,6 @@ If the word's length is even, return the middle 2 characters.
 */
 
 function getMiddle(s) {
+  let l = s.length;
   return l % 2 ? s[(l - 1) / 2] : s[l / 2 - 1] + s[l / 2];
 }
