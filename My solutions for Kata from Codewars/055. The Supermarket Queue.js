@@ -9,27 +9,10 @@
 // The function should return an integer, the total time required.
 
 function queueTime(customers, n) {
-  if (customers.length === 0) return 0;
-  if (n >= customers.length) {
-    return Math.max(...customers);
-  }
-  if (n === 1) {
-    return customers.reduce((sum, i) => sum + i);
-  }
-  let arr = [];
+  let queue = new Array(n).fill(0);
   for (let i = 0; i < customers.length; ++i) {
-    if (arr.length < n) {
-      arr.push(customers[i]);
-    } else {
-      let min = Math.min(...arr);
-      arr = arr.map((item) => {
-        if (item === min) {
-          min = 0;
-          return (item += customers[i]);
-        }
-        return item;
-      });
-    }
+    queue[0] += customers[i];
+    queue.sort((a, b) => a - b);
   }
-  return Math.max(...arr);
+  return queue[queue.length - 1];
 }
